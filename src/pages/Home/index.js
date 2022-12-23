@@ -5,9 +5,9 @@ import { auth } from '../../firebaseConnection';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 export default function Home() {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const navigate = useNavigate();
     async function handleLogin(e) {
@@ -19,7 +19,7 @@ export default function Home() {
                 navigate('/admin', {replace: true})
             })
             .catch(() => {
-                console.log('Erro ao fazer login.')
+                setError('Email ou senha inválido.')
             })
 
         } else {
@@ -33,13 +33,14 @@ export default function Home() {
             <span>Gerencie sua agenda de forma fácil.</span>
 
             <form onSubmit={handleLogin} className='form'>
+                <label className='label'>Email</label>
                 <input
                     type='text'
-                    placeholder='Digite seu email...'
+                    placeholder='example@mail.com'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-
+                <label className='label'>Senha</label>
                  <input
                     type='password'
                     placeholder='**********'
@@ -53,6 +54,8 @@ export default function Home() {
                     Não possui uma conta? Cadastre-se
                 </Link>
             </form>
+
+            <span className='error'>{error}</span>
         </div>
     )
 }

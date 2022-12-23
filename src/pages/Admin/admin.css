@@ -9,7 +9,7 @@
     margin-bottom: 28px;
 }
 
-btn-register {
+.btn-register {
     margin-bottom: 28px;
 }
 
@@ -18,27 +18,47 @@ btn-register {
     max-width: 600px;
     display: flex;
     flex-direction: column;
-    background-color: rgba(18, 18, 18, 0.38);
-    border-radius: 4px;
+    background-color: rgba(56, 56, 56, 0.38);
+    border-radius: 8px;
     margin-bottom: 12px;
     justify-content: center;
-    padding: 14px 8px;
+    padding: 14px 12px;
 }
 
 .list p {
     margin-bottom: 8px;
+    font-size: 18px;
 }
 
 .list button {
     margin-right: 8px;
     border: 0;
     border-radius: 4px;
-    padding: 4px;
+    padding: 6px;
+}
+
+.list span {
+    font-size: 16px;
+    color: #FFF;
+    text-align: center;
+}
+
+.btn-edit {
+    background-color: #5ec432;
+    transition: ease 0.3s;
+}
+
+.btn-edit:hover {
+    background-color: #87e060;
 }
 
 .btn-done {
-    color: #ffcc23;
-    background-color: transparent;
+    background-color: rgb(255, 1, 1);
+    transition: ease 0.3s;
+}
+
+.btn-done:hover {
+    background-color: rgb(255, 94, 72)
 }
 
 .btn-logout {

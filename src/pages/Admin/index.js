@@ -13,7 +13,10 @@ import {
     updateDoc
 } from 'firebase/firestore';
 import './admin.css';
-import { isElectron } from '@firebase/util';
+import { BsFillPencilFill } from 'react-icons/bs';
+import { FaTrashAlt } from 'react-icons/fa';
+ import { ToastContainer, toast } from 'react-toastify';
+
 export default function Admin() {
     const [taskInput, setTaskInput] = useState('');
     const [user, setUser] = useState({});
@@ -90,6 +93,7 @@ export default function Admin() {
     function editTask(item) {
         setTaskInput(item.task);
         setEdit(item);
+       
     }
 
     async function handleUpdateTask() {
@@ -101,6 +105,7 @@ export default function Admin() {
         console.log('Tareaf atualizada.')
         setTaskInput('')
         setEdit('')
+        toast.success('Tarefa atualizada com sucesso!')
        })
        .catch(() => {
         console.log('Erro ao atualizar.')
@@ -111,6 +116,8 @@ export default function Admin() {
 
     return (
         <div className='admin-container'>
+   
+
             <h1>Minhas tarefas</h1>
 
             <form className='form' onSubmit={handleRegister}>
@@ -129,11 +136,11 @@ export default function Admin() {
 
             {task.map((item) => (
                 <article key={item.id} className='list'>
-                    <p>{item.task}</p>
+                    <p className='task-name'>{item.task}</p>
 
                     <div>
-                        <button onClick={() => editTask(item)} >Editar</button>
-                        <button onClick={() => deleteTask(item.id)} className='btn-done'>Concluir</button>
+                        <button onClick={() => editTask(item)} className='btn-edit'><span><BsFillPencilFill/></span></button>
+                        <button onClick={() => deleteTask(item.id)} className='btn-done'><span><FaTrashAlt/></span></button>
                     </div>
                 </article>
             ))}

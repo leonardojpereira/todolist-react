@@ -4,21 +4,20 @@ import { auth } from '../../firebaseConnection';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 export default function Register() {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
     async function handleRegister(e) {
         e.preventDefault()
-        if(email !== '' && password !== '')  {
-          await createUserWithEmailAndPassword(auth, email, password)
-          .then(() => {
-            navigate('./admin', {replace: true})
-          })
-          .catch(() => {
-            console.log("Erro ao fazer cadastro!")
-          })
+        if (email !== '' && password !== '') {
+            await createUserWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    navigate('./admin', { replace: true })
+                })
+                .catch(() => {
+                    console.log("Erro ao fazer cadastro!")
+                })
 
         } else {
             alert('preencha todos os campos!')
@@ -31,6 +30,7 @@ export default function Register() {
             <span>Vamos criar sua conta!</span>
 
             <form onSubmit={handleRegister} className='form'>
+                <label className='label'>Email</label>
                 <input
                     type='text'
                     placeholder='Digite seu email...'
@@ -38,7 +38,8 @@ export default function Register() {
                     onChange={(e) => setEmail(e.target.value)}
                 />
 
-                 <input
+                <label className='label'>Senha</label>
+                <input
                     type='password'
                     placeholder='**********'
                     value={password}
