@@ -30,12 +30,12 @@ export default function Home() {
     return (
         <div className='home-container'>
             <h1>Lista de tarefas</h1>
-            <span>Gerencie sua agenda de forma fácil.</span>
+            <span className='subtitle'>Gerencie sua agenda de forma fácil.</span>
 
             <form onSubmit={handleLogin} className='form'>
                 <label className='label'>Email</label>
                 <input
-                    type='text'
+                    type='email'
                     placeholder='example@mail.com'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}

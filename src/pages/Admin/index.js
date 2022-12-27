@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { auth, db } from '../../firebaseConnection';
 import { signOut } from 'firebase/auth';
 import {
@@ -15,9 +15,11 @@ import {
 import './admin.css';
 import { BsFillPencilFill } from 'react-icons/bs';
 import { FaTrashAlt } from 'react-icons/fa';
- import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { UserContext } from '../../contexts/user';
 
 export default function Admin() {
+    const { name } = useContext(UserContext);
     const [taskInput, setTaskInput] = useState('');
     const [user, setUser] = useState({});
     const [edit, setEdit] = useState({});
@@ -54,6 +56,8 @@ export default function Admin() {
         loadTask();
     }, [])
 
+
+
     async function handleRegister(e) {
         e.preventDefault()
 
@@ -62,7 +66,7 @@ export default function Admin() {
             return;
         }
 
-        if(edit?.id) {
+        if (edit?.id) {
             handleUpdateTask();
             return;
         }
@@ -93,32 +97,32 @@ export default function Admin() {
     function editTask(item) {
         setTaskInput(item.task);
         setEdit(item);
-       
+
     }
 
     async function handleUpdateTask() {
-       const docRef = doc(db, 'task', edit?.id)
-       await updateDoc(docRef, {
-        task: taskInput,
-       })
-       .then(() => {
-        console.log('Tareaf atualizada.')
-        setTaskInput('')
-        setEdit('')
-        toast.success('Tarefa atualizada com sucesso!')
-       })
-       .catch(() => {
-        console.log('Erro ao atualizar.')
-        setTaskInput('')
-        setEdit({})
-       })
+        const docRef = doc(db, 'task', edit?.id)
+        await updateDoc(docRef, {
+            task: taskInput,
+        })
+            .then(() => {
+                console.log('Tareaf atualizada.')
+                setTaskInput('')
+                setEdit('')
+                toast.success('Tarefa atualizada com sucesso!')
+            })
+            .catch(() => {
+                console.log('Erro ao atualizar.')
+                setTaskInput('')
+                setEdit({})
+            })
     }
 
     return (
         <div className='admin-container'>
-   
+            <h1>Olá <strong className='username'>{name}</strong>, seja bem-vindo!</h1>
 
-            <h1>Minhas tarefas</h1>
+            <h2>Tarefas</h2>
 
             <form className='form' onSubmit={handleRegister}>
                 <textarea
@@ -128,7 +132,7 @@ export default function Admin() {
                 />
 
                 {Object.keys(edit).length > 0 ? (
-                    <button className='btn-register' style={{backgroundColor: '#6add39'}} type='submit'>Editar tarefa</button>
+                    <button className='btn-register' style={{ backgroundColor: '#6add39' }} type='submit'>Editar tarefa</button>
                 ) : (
                     <button className='btn-register' type='submit'>Registrar tarefa</button>
                 )}
@@ -139,8 +143,8 @@ export default function Admin() {
                     <p className='task-name'>{item.task}</p>
 
                     <div>
-                        <button onClick={() => editTask(item)} className='btn-edit'><span><BsFillPencilFill/></span></button>
-                        <button onClick={() => deleteTask(item.id)} className='btn-done'><span><FaTrashAlt/></span></button>
+                        <button onClick={() => editTask(item)} className='btn-edit'><span><BsFillPencilFill /></span></button>
+                        <button onClick={() => deleteTask(item.id)} className='btn-done'><span><FaTrashAlt /></span></button>
                     </div>
                 </article>
             ))}
