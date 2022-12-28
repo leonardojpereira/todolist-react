@@ -14,6 +14,7 @@ export default function App() {
         </BrowserRouter>
         <ToastContainer autoClose={1500} />
       </UserProvider>
+     
     </div>
 
   )

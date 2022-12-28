@@ -29,7 +29,7 @@ export default function Home() {
 
     return (
         <div className='home-container'>
-            <h1>Lista de tarefas</h1>
+            <h1>Lista de Tarefas</h1>
             <span className='subtitle'>Gerencie sua agenda de forma fácil.</span>
 
             <form onSubmit={handleLogin} className='form'>
