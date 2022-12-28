@@ -9,12 +9,11 @@ export default function App() {
   return (
     <div className='App'>
       <UserProvider>
-      <BrowserRouter>
-        <RoutesApp />
-      </BrowserRouter>
-      <ToastContainer autoClose={1500}/>
+        <BrowserRouter>
+          <RoutesApp />
+        </BrowserRouter>
+        <ToastContainer autoClose={1500} />
       </UserProvider>
-      
     </div>
 
   )

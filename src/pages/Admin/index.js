@@ -19,7 +19,7 @@ import { toast } from 'react-toastify';
 import { UserContext } from '../../contexts/user';
 
 export default function Admin() {
-    const { name } = useContext(UserContext);
+    const { name, setName } = useContext(UserContext);
     const [taskInput, setTaskInput] = useState('');
     const [user, setUser] = useState({});
     const [edit, setEdit] = useState({});
@@ -32,7 +32,6 @@ export default function Admin() {
 
             if (userDetail) {
                 const data = JSON.parse(userDetail);
-
                 const taskRef = collection(db, 'task')
                 const q = query(taskRef, orderBy('created', 'desc'), where("userUid", "==", data?.uid))
                 const unsub = onSnapshot(q, (snapshot) => {
@@ -56,7 +55,12 @@ export default function Admin() {
         loadTask();
     }, [])
 
-
+    useEffect(() => {
+        async function loadUserName() {
+            setName(localStorage.getItem('userName'));
+        }
+        loadUserName();
+    }, [setName])
 
     async function handleRegister(e) {
         e.preventDefault()

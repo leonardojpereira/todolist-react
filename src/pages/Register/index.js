@@ -38,10 +38,12 @@ export default function Register() {
                     }
                 })
 
-                addDoc(collection(db, 'user'), {
-                    userName: name,
-                    email: email,
-                })
+            addDoc(collection(db, 'user'), {
+                userName: name,
+                email: email,
+            })
+
+            localStorage.setItem('userName', name);
 
         } else {
             alert('Preencha todos os campos.')
