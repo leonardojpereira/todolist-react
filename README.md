@@ -20,6 +20,7 @@ Para o banco de dados, utilizei o Firebase e o localStorage para guardar os dado
 ## 💻 Tecnologias utilizadas
 <div display="flex">
    <img align="center" alt="logo_react" height="40" width="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
+  <img align="center" alt="logo_react" height="40" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain-wordmark.svg">
 </div>
 
 ## :link: Deploy
