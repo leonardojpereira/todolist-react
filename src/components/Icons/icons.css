@@ -1,10 +1,10 @@
 .icon-container {
     position: absolute;
     right: 0;
-    bottom: 0;
+    top: 0;
     display: flex;
     margin-right: 22px;
-    margin-bottom: 14px;
+    margin-top: 14px;
 }
 
 .icon {

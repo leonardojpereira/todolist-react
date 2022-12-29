@@ -3,8 +3,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserProvider from './contexts/user';
+import Icons from './components/Icons';
 
-import Icons from './components/Icons'
 
 
 export default function App() {
