@@ -1,0 +1,19 @@
+.icon-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    margin-right: 22px;
+    margin-bottom: 14px;
+}
+
+.icon {
+    color: #FFF;
+    font-size: 20px;
+    margin-right: 16px;
+    transition: ease 0.4s;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}

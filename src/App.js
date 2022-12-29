@@ -4,6 +4,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserProvider from './contexts/user';
 
+import Icons from './components/Icons'
+
 
 export default function App() {
   return (
@@ -14,7 +16,7 @@ export default function App() {
         </BrowserRouter>
         <ToastContainer autoClose={1500} />
       </UserProvider>
-     
+      <Icons/>
     </div>
 
   )
