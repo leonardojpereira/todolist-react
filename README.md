@@ -26,7 +26,7 @@ Para o banco de dados, utilizei o Firebase e o localStorage para guardar os dado
 ## :link: Deploy
 
 ```
-https://todolist-firebase-app.netlify.app/
+https://todo-list-firebase-app.netlify.app/
 ```
 
 ## Imagem / Icones
